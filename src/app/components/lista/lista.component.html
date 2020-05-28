@@ -1,0 +1,42 @@
+<ul class="list-group">
+    <li class="list-group-item list-group-item-primary my-2" *ngFor="let item of items | async">
+        {{item.name}}
+        <div class="float-right" (click)="eliminar(item)">
+            <i class="far fa-trash-alt"></i>
+        </div>
+        <div class="float-right mx-3" (click)="editar(item)"
+            data-toggle="modal" data-target="#exampleModal"
+        >
+            <i class="fa fa-pen"></i>
+        </div>
+    </li>
+</ul>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Editar: {{editarItem.name}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form (ngSubmit)="agregarItemEditado()">
+            <div class="modal-body">
+                <div class="form-group">
+                    <input 
+                        type="text" placeholder="Ingresa un texto" 
+                        name="name" class="form-control"
+                        [(ngModel)]="editarItem.name"
+                    >
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-warning" type="submit">Editar</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>

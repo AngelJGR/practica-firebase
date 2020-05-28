@@ -1,0 +1,10 @@
+<form (ngSubmit)="agregar()">
+    <div class="form-group">
+        <input 
+            type="text" placeholder="Ingresa un texto" 
+            name="name" class="form-control"
+            [(ngModel)]="item.name"
+        >
+    </div>
+    <button class="btn btn-warning mt-3" type="submit">Guardar</button>
+</form>
